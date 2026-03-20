@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Xolmurodov Diyorbek</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:         #ffffff;
+      --ink:        #111111;
+      --muted:      #888888;
+      --rule:       #e8e8e8;
+      --radius:     12px;
+      --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    html, body {
+      height: 100%;
+      overflow: hidden;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      line-height: 1.65;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .wrapper {
+      width: 100%;
+      max-width: 600px;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    /* ── Reveal animation ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.65s var(--transition) forwards;
+    }
+    .reveal:nth-child(1) { animation-delay: 0.05s; }
+    .reveal:nth-child(2) { animation-delay: 0.15s; }
+    .reveal:nth-child(3) { animation-delay: 0.25s; }
+    .reveal:nth-child(4) { animation-delay: 0.35s; }
+    .reveal:nth-child(5) { animation-delay: 0.44s; }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Header ── */
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .logo-wrap {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: var(--ink);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+      transition: transform var(--transition), box-shadow var(--transition);
+      cursor: default;
+    }
+    .logo-wrap:hover {
+      transform: scale(1.06) rotate(-4deg);
+      box-shadow: 0 8px 28px rgba(0,0,0,0.16);
+    }
+    .monogram {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 300;
+      color: #fff;
+      letter-spacing: 0.03em;
+      user-select: none;
+    }
+
+    .name-block { display: flex; flex-direction: column; gap: 3px; }
+
+    .full-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.7rem, 4vw, 2.4rem);
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      line-height: 1.1;
+    }
+    .tagline {
+      font-size: 0.78rem;
+      font-weight: 300;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* ── Rule ── */
+    hr.rule {
+      border: none;
+      height: 1px;
+      background: var(--rule);
+    }
+
+    /* ── Section label ── */
+    .section-label {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    /* ── About ── */
+    .about p {
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: #222;
+      line-height: 1.75;
+      margin-bottom: 8px;
+    }
+    .about p:last-child { margin-bottom: 0; }
+    .about p em {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.05em;
+      color: #444;
+    }
+
+    /* ── Social grid ── */
+    .social-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+
+    .social-link {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      padding: 11px 14px;
+      border: 1px solid var(--rule);
+      border-radius: var(--radius);
+      text-decoration: none;
+      color: var(--ink);
+      font-size: 0.82rem;
+      font-weight: 400;
+      position: relative;
+      overflow: hidden;
+      transition:
+        border-color var(--transition),
+        transform var(--transition),
+        box-shadow var(--transition);
+    }
+    .social-link::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--ink);
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+    .social-link:hover {
+      border-color: var(--ink);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 16px rgba(0,0,0,0.07);
+    }
+    .social-link:hover::before { opacity: 0.04; }
+    .social-link:active { transform: translateY(0); }
+
+    .social-link i {
+      font-size: 0.95rem;
+      width: 16px;
+      text-align: center;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+      transition: transform var(--transition);
+    }
+    .social-link:hover i { transform: scale(1.18); }
+    .social-link span { position: relative; z-index: 1; }
+
+    /* Per-platform icon colors on hover */
+    .social-link[data-platform="github"]:hover i    { color: #333; }
+    .social-link[data-platform="telegram"]:hover i  { color: #229ED9; }
+    .social-link[data-platform="codeforces"]:hover i{ color: #1F8ACB; }
+    .social-link[data-platform="youtube"]:hover i   { color: #FF0000; }
+    .social-link[data-platform="linkedin"]:hover i  { color: #0A66C2; }
+    .social-link[data-platform="email"]:hover i     { color: #555; }
+
+    /* ── Footer ── */
+    footer {
+      font-size: 0.72rem;
+      color: var(--muted);
+      text-align: center;
+      font-weight: 300;
+      letter-spacing: 0.03em;
+    }
+
+    /* ── Custom cursor (desktop only) ── */
+    .cursor-dot {
+      width: 6px; height: 6px;
+      background: var(--ink);
+      border-radius: 50%;
+      position: fixed; top: 0; left: 0;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      z-index: 9999;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .cursor-ring {
+      width: 26px; height: 26px;
+      border: 1.5px solid var(--ink);
+      border-radius: 50%;
+      position: fixed; top: 0; left: 0;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      z-index: 9998;
+      opacity: 0;
+      transition: opacity 0.3s, width 0.22s, height 0.22s;
+    }
+    body.cursor-active .cursor-dot,
+    body.cursor-active .cursor-ring { opacity: 1; }
+    body.cursor-hover  .cursor-ring { width: 40px; height: 40px; opacity: 0.45; }
+
+    /* ── Mobile: restore scroll ── */
+    @media (max-width: 600px) {
+      html, body { overflow: auto; height: auto; }
+      body { align-items: flex-start; padding: 40px 20px 48px; }
+      .social-grid { grid-template-columns: 1fr 1fr; }
+      .wrapper { gap: 24px; }
+    }
+
+    @media (hover: none) {
+      .cursor-dot, .cursor-ring { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cursor-dot"  id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <main class="wrapper">
+
+    <!-- ① Header -->
+    <header class="header reveal">
+      <div class="logo-wrap">
+        <div class="monogram">XD</div>
+      </div>
+      <div class="name-block">
+        <h1 class="full-name">Xolmurodov Diyorbek</h1>
+        <p class="tagline">Backend Developer &amp; Startup Founder</p>
+      </div>
+    </header>
+
+    <hr class="rule reveal"/>
+
+    <!-- ② About -->
+    <section class="about reveal" aria-labelledby="about-label">
+      <p class="section-label" id="about-label">About</p>
+      <p>
+        I'm an experienced backend developer with expertise in server-side architecture, APIs,
+        and databases. As a startup founder, I balance technical decisions with business strategy,
+        while exploring <em>Data Science</em> to combine backend skills with machine learning and AI.
+      </p>
+      <p>
+        Driven by challenges, I constantly look for ways to optimize systems and innovate —
+        merging deep coding knowledge with strategic leadership to shape the tech landscape.
+      </p>
+    </section>
+
+    <!-- ③ Social -->
+    <section class="social reveal" aria-labelledby="social-label">
+      <p class="section-label" id="social-label">Find me on</p>
+      <div class="social-grid">
+
+        <a class="social-link" href="https://github.com/diyorbekw"
+           target="_blank" rel="noopener noreferrer" data-platform="github" aria-label="GitHub">
+          <i class="fab fa-github"></i><span>GitHub</span>
+        </a>
+
+        <a class="social-link" href="https://t.me/diyor_developer"
+           target="_blank" rel="noopener noreferrer" data-platform="telegram" aria-label="Telegram">
+          <i class="fab fa-telegram"></i><span>Telegram</span>
+        </a>
+
+        <a class="social-link" href="https://codeforces.com/profile/diyorbekw"
+           target="_blank" rel="noopener noreferrer" data-platform="codeforces" aria-label="Codeforces">
+          <i class="fas fa-code"></i><span>Codeforces</span>
+        </a>
+
+        <a class="social-link" href="https://youtube.com/@diyor_developer"
+           target="_blank" rel="noopener noreferrer" data-platform="youtube" aria-label="YouTube">
+          <i class="fab fa-youtube"></i><span>YouTube</span>
+        </a>
+
+        <a class="social-link" href="https://linkedin.com/in/diyordeveloper"
+           target="_blank" rel="noopener noreferrer" data-platform="linkedin" aria-label="LinkedIn">
+          <i class="fab fa-linkedin-in"></i><span>LinkedIn</span>
+        </a>
+
+        <a class="social-link" href="mailto:diyorbek0143@gmail.com"
+           data-platform="email" aria-label="Send an email">
+          <i class="fas fa-envelope"></i><span>Email</span>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- ④ Footer -->
+    <footer class="reveal">
+      <p>© <span id="year"></span> Xolmurodov Diyorbek &mdash; All rights reserved</p>
+    </footer>
+
+  </main>
+
+  <script>
+    /* ── Year ── */
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    /* ── Custom cursor (mouse devices only) ── */
+    if (window.matchMedia('(hover: hover)').matches) {
+      const dot  = document.getElementById('cursorDot');
+      const ring = document.getElementById('cursorRing');
+      document.body.classList.add('cursor-active');
+
+      let mx = 0, my = 0, rx = 0, ry = 0;
+      document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+
+      const lerp = (a, b, t) => a + (b - a) * t;
+      (function loop() {
+        dot.style.left  = mx + 'px';
+        dot.style.top   = my + 'px';
+        rx = lerp(rx, mx, 0.14);
+        ry = lerp(ry, my, 0.14);
+        ring.style.left = rx + 'px';
+        ring.style.top  = ry + 'px';
+        requestAnimationFrame(loop);
+      })();
+
+      document.querySelectorAll('a, button, .logo-wrap').forEach(el => {
+        el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+        el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+      });
+    }
+  </script>
+</body>
+</html>
